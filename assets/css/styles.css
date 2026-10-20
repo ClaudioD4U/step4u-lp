@@ -287,10 +287,10 @@ button { font: inherit; }
   color: #fff;
   box-shadow: var(--shadow-brand);
 }
-/* Mouse no botão: borda do card e botão dão uma volta completa juntos
-   e terminam na posição original. */
-.plan--featured:has(.btn--gradient:hover),
-.plan--featured:has(.btn--gradient:focus-visible) { animation: gradient-spin 1.8s cubic-bezier(.65, 0, .35, 1) 1; }
+/* Mouse em qualquer parte do card (ou foco pelo teclado): borda e botão dão
+   uma volta completa juntos e terminam na posição original. */
+.plan--featured:hover,
+.plan--featured:focus-within { animation: gradient-spin 1.8s ease-in-out 1; }
 @keyframes gradient-spin {
   from { --gradient-angle: 130deg; }
   to { --gradient-angle: 490deg; }
