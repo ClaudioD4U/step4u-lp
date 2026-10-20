@@ -3,22 +3,7 @@
    Identidade: base clara, azul com função definida, degraus como grafismo.
    ========================================================================= */
 
-/* Fontes: Montserrat (títulos) auto-hospedada, recortada para latim.
-   O texto usa Arial (fonte do sistema: zero download). */
-@font-face {
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("../fonts/montserrat-700.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url("../fonts/montserrat-800.woff2") format("woff2");
-}
+/* Fontes: ver assets/css/fonts.css (servidor) e fonts-inline.css (arquivo local). */
 
 :root {
   --deep: #003075;      /* azul profundo: títulos, botão principal */

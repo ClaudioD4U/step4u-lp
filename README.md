@@ -19,7 +19,9 @@ landing/
 ├── favicon.ico
 ├── staticwebapp.config.json cache, headers de segurança e 404 (Azure Static Web Apps)
 └── assets/
-    ├── css/styles.css
+    ├── css/styles.css       estilos da página
+    ├── css/fonts.css        @font-face apontando para os WOFF2 (uso em servidor)
+    ├── css/fonts-inline.css @font-face com as fontes embutidas (uso em file://)
     ├── js/main.js           header, menu mobile, brilho do mouse e formulário
     ├── fonts/               Montserrat 700/800 em WOFF2, só latim (~15 KB cada)
     └── img/                 logos SVG, grafismo de degraus, ícones e imagem de compartilhamento
@@ -57,7 +59,22 @@ Netlify, Cloudflare Pages, Nginx). Para manter a nota do PageSpeed:
   `index.html` para invalidar o cache.
 - **HTTPS** com HTTP/2 ou HTTP/3.
 
-Para testar localmente:
+## Abrir sem servidor
+
+A página é independente: dá para abrir o `index.html` direto do disco (duplo
+clique) e ela carrega completa, sem erros. Todos os caminhos são relativos, então
+também funciona dentro de qualquer subpasta de um servidor.
+
+O navegador bloqueia arquivos de fonte e o manifesto em `file://`. Por isso um
+script curto no `<head>` escolhe:
+
+- **servidor (http/https):** pré-carrega os WOFF2, usa `fonts.css` e o manifesto;
+- **arquivo local (file://):** usa `fonts-inline.css`, com as fontes embutidas.
+
+Os ~40 KB da versão embutida só são baixados no modo arquivo local, sem afetar o
+PageSpeed em produção.
+
+Para testar como servidor:
 
 ```bash
 python -m http.server 8090 --directory landing
@@ -68,9 +85,9 @@ python -m http.server 8090 --directory landing
 | | Performance | Acessibilidade | Boas práticas | SEO |
 |---|---|---|---|---|
 | Desktop | 100 | 100 | 100 | 100 |
-| Mobile | 94 a 98 | 100 | 100 | 100 |
+| Mobile | 94 a 100 | 100 | 100 | 100 |
 
-Mobile: LCP 1,4 s, CLS 0. Parte do tempo de bloqueio medido veio de uma extensão
+Mobile: LCP 1,4–1,5 s, CLS 0 (a nota de performance oscila entre rodadas). Parte do tempo de bloqueio medido veio de uma extensão
 do navegador da máquina de teste, que não afeta visitantes. Com compressão e
 cache em produção, os alertas restantes do relatório desaparecem.
 

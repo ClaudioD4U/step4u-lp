@@ -28,16 +28,27 @@
   <meta name="twitter:image" content="https://step4u.example/assets/img/og-step4u.jpg">
 
   <!-- Ícones -->
-  <link rel="icon" href="/favicon.ico" sizes="48x48">
-  <link rel="icon" href="/assets/img/favicon-32.png" type="image/png" sizes="32x32">
-  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-
-  <!-- Recursos críticos: fontes do título (LCP) e CSS -->
-  <link rel="preload" href="/assets/fonts/montserrat-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/assets/fonts/montserrat-700.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/styles.css?v=1">
-  <script src="/assets/js/main.js?v=1" defer></script>
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" href="assets/img/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <!-- Fontes e manifesto: num servidor, pré-carrega os WOFF2; aberto direto do
+       disco (file://), usa a versão embutida, porque o navegador bloqueia
+       arquivos de fonte e o manifesto nesse modo. -->
+  <script>
+    (function (d) {
+      var h = d.head, file = location.protocol === 'file:';
+      function add(attrs) { var l = d.createElement('link'); for (var k in attrs) l.setAttribute(k, attrs[k]); h.appendChild(l); }
+      if (file) { add({ rel: 'stylesheet', href: 'assets/css/fonts-inline.css' }); return; }
+      ['800', '700'].forEach(function (w) {
+        add({ rel: 'preload', href: 'assets/fonts/montserrat-' + w + '.woff2', as: 'font', type: 'font/woff2', crossorigin: '' });
+      });
+      add({ rel: 'stylesheet', href: 'assets/css/fonts.css?v=1' });
+      add({ rel: 'manifest', href: 'site.webmanifest' });
+    })(document);
+  </script>
+  <noscript><link rel="stylesheet" href="assets/css/fonts.css?v=1"></noscript>
+  <link rel="stylesheet" href="assets/css/styles.css?v=2">
+  <script src="assets/js/main.js?v=1" defer></script>
 
   <!-- Dados estruturados (Google e LLMs) -->
   <script type="application/ld+json">
@@ -167,9 +178,9 @@
 
   <header class="site-header" id="topo">
     <div class="container header-bar">
-      <a class="brand" href="/" aria-label="Step4u, página inicial">
-        <img class="brand-logo brand-logo--light" src="/assets/img/logo-step4u.svg" width="118" height="32" alt="Step4u">
-        <img class="brand-logo brand-logo--dark" src="/assets/img/logo-step4u-branco.svg" width="118" height="32" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <a class="brand" href="#topo" aria-label="Step4u, voltar ao topo">
+        <img class="brand-logo brand-logo--light" src="assets/img/logo-step4u.svg" width="118" height="32" alt="Step4u">
+        <img class="brand-logo brand-logo--dark" src="assets/img/logo-step4u-branco.svg" width="118" height="32" alt="" aria-hidden="true" loading="lazy" decoding="async">
       </a>
       <nav class="main-nav" id="menu" aria-label="Navegação principal">
         <ul>
@@ -340,7 +351,7 @@
           </ul>
           <!-- Espaço para foto: trocar por <img src="..." width height alt="..." loading="lazy" decoding="async"> -->
           <div class="media-slot" aria-hidden="true">
-            <img src="/assets/img/grafismo-degraus.svg" width="1447" height="1364" alt="" loading="lazy" decoding="async">
+            <img src="assets/img/grafismo-degraus.svg" width="1447" height="1364" alt="" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
@@ -365,7 +376,7 @@
 
     <!-- ANÁLISE PRÉVIA -->
     <section class="section lead" id="diagnostico" aria-labelledby="lead-title">
-      <img class="lead-graphic" src="/assets/img/grafismo-degraus.svg" width="1447" height="1364" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="lead-graphic" src="assets/img/grafismo-degraus.svg" width="1447" height="1364" alt="" aria-hidden="true" loading="lazy" decoding="async">
       <div class="container lead-wrap">
         <p class="pill-label"><svg class="icon" aria-hidden="true"><use href="#i-sparkles"/></svg>Análise prévia gratuita</p>
         <h2 id="lead-title" class="lead-title">Seu perfil passa no filtro americano?</h2>
@@ -411,7 +422,7 @@
             <li class="card"><span class="icon-plate"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span><h3>Suporte jurídico</h3><p>Orientação sobre vistos de trabalho, transferência interna e estratégia de imigração.</p></li>
           </ul>
           <div class="media-slot" aria-hidden="true">
-            <img src="/assets/img/grafismo-degraus.svg" width="1447" height="1364" alt="" loading="lazy" decoding="async">
+            <img src="assets/img/grafismo-degraus.svg" width="1447" height="1364" alt="" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
@@ -554,7 +565,7 @@
     <section class="section" aria-labelledby="cta-title">
       <div class="container">
         <div class="cta-banner">
-          <img class="cta-graphic" src="/assets/img/grafismo-degraus.svg" width="1447" height="1364" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <img class="cta-graphic" src="assets/img/grafismo-degraus.svg" width="1447" height="1364" alt="" aria-hidden="true" loading="lazy" decoding="async">
           <p class="eyebrow eyebrow--light">Cancele quando quiser</p>
           <h2 id="cta-title" class="cta-title">Sua carreira nos EUA <span class="text-gradient-light">começa aqui.</span></h2>
           <p class="cta-text">Junte-se a milhares de brasileiros que estão performando nos processos seletivos americanos com as ferramentas certas.</p>
@@ -571,7 +582,7 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <img src="/assets/img/logo-step4u-branco.svg" width="118" height="32" alt="Step4u" loading="lazy" decoding="async">
+          <img src="assets/img/logo-step4u-branco.svg" width="118" height="32" alt="Step4u" loading="lazy" decoding="async">
           <p>Performance profissional para brasileiros no mercado americano.</p>
         </div>
         <nav class="footer-col" aria-label="Plataforma">
@@ -594,8 +605,8 @@
           <h2>Suporte</h2>
           <ul>
             <li><a href="#faq">Perguntas frequentes</a></li>
-            <li><a href="/termos-de-uso">Termos de uso</a></li>
-            <li><a href="/politica-de-privacidade">Política de privacidade</a></li>
+            <li><a href="termos-de-uso">Termos de uso</a></li>
+            <li><a href="politica-de-privacidade">Política de privacidade</a></li>
           </ul>
         </nav>
       </div>
