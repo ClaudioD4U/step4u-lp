@@ -1,0 +1,22 @@
+{
+  "globalHeaders": {
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "X-Frame-Options": "DENY",
+    "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+  },
+  "routes": [
+    { "route": "/assets/*", "headers": { "Cache-Control": "public, max-age=31536000, immutable" } },
+    { "route": "/favicon.ico", "headers": { "Cache-Control": "public, max-age=604800" } },
+    { "route": "/index.html", "headers": { "Cache-Control": "public, max-age=0, must-revalidate" } },
+    { "route": "/llms.txt", "headers": { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "public, max-age=3600" } }
+  ],
+  "responseOverrides": {
+    "404": { "rewrite": "/404.html", "statusCode": 404 }
+  },
+  "mimeTypes": {
+    ".webmanifest": "application/manifest+json",
+    ".woff2": "font/woff2"
+  }
+}

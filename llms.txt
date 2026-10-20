@@ -1,0 +1,41 @@
+# Step4u
+
+> Step4u é uma plataforma de carreira que prepara profissionais brasileiros para conquistar vagas nos Estados Unidos, com currículo otimizado para ATS, simulação de entrevistas com IA, mentoria e uma comunidade de brasileiros já contratados no mercado americano.
+
+## Para quem é
+- Profissionais brasileiros, de qualquer área (tech, produto, dados, marketing, finanças, operações), que querem trabalhar nos EUA.
+- Atende todos os estágios: do planejamento inicial a quem já tem H-1B, O-1 ou green card. Não é preciso ter visto para participar.
+
+## O problema que resolve
+- Currículo no formato brasileiro é descartado pelos sistemas ATS dos recrutadores americanos.
+- A maior parte das vagas nos EUA é preenchida por indicação (networking).
+- Entrevistas comportamentais (método STAR) e técnicas são pouco praticadas no Brasil.
+- Falta de estratégia sobre vistos (H-1B, O-1, green card) e relocação.
+
+## Como funciona (4 etapas)
+1. Diagnóstico: mapeamento do perfil, gaps e objetivo de carreira nos EUA.
+2. Plano sob medida: roadmap com metas semanais de currículo, networking e entrevistas.
+3. Execução guiada: mentoria, conteúdo e comunidade.
+4. Conquista da vaga: suporte em ofertas, negociação salarial e relocação.
+
+## Ferramentas
+- Resume Builder ATS: valida o currículo contra os parsers usados por recrutadores americanos.
+- Otimização de LinkedIn: templates e revisões do perfil.
+- Mock interviews: simulações comportamentais e técnicas com feedback no formato STAR.
+- Vagas curadas: oportunidades selecionadas para brasileiros, com filtros por visto e remoto.
+- IA de carreira: assistente que sugere próximos passos e prepara para entrevistas.
+- Guia de relocação: SSN, banco, moradia, escola e mudança para os EUA.
+
+## Planos
+- Starter — US$ 29/mês: plataforma, trilhas de carreira, Resume Builder ATS, comunidade e vagas curadas semanais.
+- Pro — US$ 59/mês: tudo do Starter + 2 mock interviews por mês, revisão de currículo e LinkedIn, eventos com recrutadores.
+- Premium 1:1 — sob consulta: mentoria individual semanal, plano de relocação, apoio em negociação salarial e suporte jurídico para visto.
+- Cancelamento a qualquer momento, sem multa e sem fidelidade.
+- Não há garantia de contratação: a Step4u oferece método.
+
+## Links
+- [Página inicial](https://step4u.example/)
+- [Análise prévia gratuita](https://step4u.example/#diagnostico)
+- [Planos](https://step4u.example/#planos)
+- [Perguntas frequentes](https://step4u.example/#faq)
+- [Criar conta](https://app.step4u.example/auth?mode=signup)
