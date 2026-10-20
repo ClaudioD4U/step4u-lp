@@ -342,6 +342,23 @@ button { font: inherit; }
 .checklist { display: grid; gap: 8px; margin-bottom: 16px; flex: 1; }
 .checklist li { display: flex; gap: 8px; font-size: 14px; line-height: 1.4; }
 .checklist .icon { width: 16px; height: 16px; color: var(--accent); margin-top: 1px; }
+/* Card em destaque: no hover os itens fazem uma "ola" (crescem um a um e
+   voltam) e cada um fica em negrito quando a onda passa por ele. */
+.plan--featured .checklist li { transform-origin: left center; }
+.plan--featured:hover .checklist li,
+.plan--featured:focus-within .checklist li {
+  animation: checklist-ola .5s ease-in-out both;
+}
+.plan--featured .checklist li:nth-child(2) { animation-delay: 150ms; }
+.plan--featured .checklist li:nth-child(3) { animation-delay: 300ms; }
+.plan--featured .checklist li:nth-child(4) { animation-delay: 450ms; }
+.plan--featured .checklist li:nth-child(5) { animation-delay: 600ms; }
+.plan--featured .checklist li:nth-child(6) { animation-delay: 750ms; }
+@keyframes checklist-ola {
+  0% { transform: none; font-weight: 400; }
+  50% { transform: translateX(4px) scale(1.08); font-weight: 700; }
+  100% { transform: none; font-weight: 700; }
+}
 
 /* Depoimentos */
 .testimonial figure { display: flex; flex-direction: column; height: 100%; margin: 0; }
