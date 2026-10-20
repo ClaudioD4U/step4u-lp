@@ -255,8 +255,11 @@ button { font: inherit; }
 .dropzone-hint { color: rgba(255, 255, 255, .72); font-size: 12px; }
 .form-error { min-height: 20px; margin: 8px 0; color: #ffd4d0; font-size: 12px; }
 
-/* Ferramentas */
-.feature-grid { display: grid; gap: 16px; }
+/* Ferramentas e depoimentos: mesmo número de cards por linha (1 / 2 / 3).
+   Se a última linha ficar incompleta, os cards dela crescem e ocupam a
+   largura toda (flex-grow), sem deixar buraco. */
+.feature-grid, .testimonials { display: flex; flex-wrap: wrap; gap: 16px; }
+.feature-grid > li, .testimonials > li { flex: 1 1 100%; }
 
 /* Planos */
 .plans { display: grid; gap: 24px; max-width: 1120px; margin-inline: auto; padding-top: 12px; }
@@ -278,7 +281,6 @@ button { font: inherit; }
 .checklist .icon { width: 16px; height: 16px; color: var(--accent); margin-top: 1px; }
 
 /* Depoimentos */
-.testimonials { display: grid; gap: 16px; }
 .testimonial figure { display: flex; flex-direction: column; height: 100%; margin: 0; }
 .stars { display: flex; gap: 2px; margin-bottom: 12px; color: var(--accent); }
 .stars .icon { width: 14px; height: 14px; fill: currentColor; stroke: none; }
@@ -341,8 +343,8 @@ button { font: inherit; }
   .nav-actions .link-strong { text-align: center; }
 }
 @media (min-width: 600px) {
-  .card-grid, .feature-grid { grid-template-columns: repeat(2, 1fr); }
-  .testimonials { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .card-grid { grid-template-columns: repeat(2, 1fr); }
+  .feature-grid > li, .testimonials > li { flex-basis: calc((100% - 16px) / 2); }
   .footer-top { grid-template-columns: 2fr repeat(3, 1fr); }
 }
 @media (min-width: 768px) {
@@ -354,7 +356,7 @@ button { font: inherit; }
 @media (min-width: 900px) {
   .split { grid-template-columns: 1fr 1fr; align-items: stretch; }
   .plans { grid-template-columns: repeat(3, 1fr); }
-  .feature-grid { grid-template-columns: repeat(4, 1fr); }
+  .feature-grid > li, .testimonials > li { flex-basis: calc((100% - 32px) / 3); }
 }
 @media (min-width: 1040px) {
   /* Linha que conecta as etapas da jornada */
