@@ -264,7 +264,21 @@ button { font: inherit; }
 /* Planos */
 .plans { display: grid; gap: 24px; max-width: 1120px; margin-inline: auto; padding-top: 12px; }
 .plan { position: relative; display: flex; flex-direction: column; padding-top: 28px; }
-.plan--featured { border: 2px solid var(--accent); box-shadow: var(--shadow-brand); }
+/* Plano em destaque: borda em degradê (azul claro → escuro, como a seção de
+   análise prévia) feita com dois fundos: o branco no padding-box e o
+   degradê no border-box. */
+.plan--featured {
+  border: 2px solid transparent;
+  background:
+    linear-gradient(var(--card), var(--card)) padding-box,
+    linear-gradient(140deg, var(--blue) 0%, var(--accent) 35%, var(--deep) 70%, var(--ink) 100%) border-box;
+  box-shadow: var(--shadow-brand);
+}
+.btn--gradient {
+  background: linear-gradient(120deg, var(--blue) 0%, var(--accent) 40%, var(--deep) 80%, var(--ink) 100%);
+  color: #fff;
+  box-shadow: var(--shadow-brand);
+}
 .card .plan-badge {
   position: absolute; top: -12px; left: 50%; transform: translateX(-50%); white-space: nowrap;
   padding: 4px 12px; border-radius: 999px; background: var(--accent); color: #fff;
