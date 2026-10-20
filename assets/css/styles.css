@@ -105,11 +105,11 @@ button { font: inherit; }
 /* ---------- Hero ---------- */
 .hero { position: relative; overflow: hidden; background: #fff; padding-top: var(--header-h); }
 .hero-glow {
-  position: absolute; top: 0; left: 0; width: 520px; height: 520px; border-radius: 50%;
+  position: absolute; top: 0; left: 0; width: 1040px; height: 1040px; border-radius: 50%;
   /* Degradê radial em vez de filter: blur() — mesmo efeito, muito mais barato de pintar. */
-  background: radial-gradient(circle closest-side, rgba(0, 101, 173, .32), rgba(0, 101, 173, .12) 55%, rgba(0, 101, 173, 0));
+  background: radial-gradient(circle closest-side, rgba(0, 101, 173, .16), rgba(0, 101, 173, .06) 55%, rgba(0, 101, 173, 0));
   pointer-events: none;
-  transform: translate3d(calc(50vw - 260px), calc(var(--hero-h, 760px) - 260px), 0);
+  transform: translate3d(calc(50vw - 520px), calc(var(--hero-h, 760px) - 520px), 0);
   transition: transform .6s cubic-bezier(.22, 1, .36, 1);
   will-change: transform;
 }

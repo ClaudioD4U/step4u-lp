@@ -42,7 +42,7 @@
   var hero = document.querySelector('.hero');
   var glow = document.querySelector('.hero-glow');
   if (hero && glow) {
-    var size = 520;
+    var size = 1040; // mesmo tamanho do .hero-glow no CSS
     var rest = function () {
       // Repouso: centro na base do hero, com metade escondida.
       glow.style.transform = 'translate3d(' + (hero.clientWidth / 2 - size / 2) + 'px,' + (hero.clientHeight - size / 2) + 'px,0)';
