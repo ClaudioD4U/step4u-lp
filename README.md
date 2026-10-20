@@ -23,7 +23,7 @@ landing/
     ├── css/fonts.css        @font-face apontando para os WOFF2 (uso em servidor)
     ├── css/fonts-inline.css @font-face com as fontes embutidas (uso em file://)
     ├── js/main.js           header, menu mobile, brilho do mouse e formulário
-    ├── fonts/               Montserrat 700/800 em WOFF2, só latim (~15 KB cada)
+    ├── fonts/               Gibson 700 (títulos) e Open Sans 400/700 (texto) em WOFF2, só latim (~13–16 KB cada)
     └── img/                 logos SVG, grafismo de degraus, ícones e imagem de compartilhamento
 ```
 
@@ -112,7 +112,11 @@ cache em produção, os alertas restantes do relatório desaparecem.
 - Sem framework: ~5 KB de JS (carregado com `defer`) e ~21 KB de CSS sem
   compressão.
 - Fontes auto-hospedadas, recortadas para latim, com `preload` e
-  `font-display: swap`; o texto corrido usa Arial (zero download).
+  `font-display: swap`. Fallback em Arial com `size-adjust`/`ascent-override`
+  nas medidas da Gibson e da Open Sans, para a troca de fonte não deslocar o layout.
+- As pastas `fonts/Gibson` e `fonts/Open_Sans` são os arquivos originais; a página
+  usa só os recortes `gibson-700`, `opensans-400` e `opensans-700`. Para gerar de novo:
+  `python -m fontTools.subset <fonte.ttf> --unicodes="U+0000-00FF,U+0131,U+0152-0153,U+2000-206F,U+20AC,U+2122" --flavor=woff2`.
 - Ícones em um sprite SVG inline, grafismo do hero em SVG inline e imagens
   abaixo da dobra com `loading="lazy"`.
 - Brilho do hero com `radial-gradient` em vez de `filter: blur()` (bem mais

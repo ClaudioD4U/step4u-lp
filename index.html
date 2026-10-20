@@ -39,15 +39,15 @@
       var h = d.head, file = location.protocol === 'file:';
       function add(attrs) { var l = d.createElement('link'); for (var k in attrs) l.setAttribute(k, attrs[k]); h.appendChild(l); }
       if (file) { add({ rel: 'stylesheet', href: 'assets/css/fonts-inline.css' }); return; }
-      ['800', '700'].forEach(function (w) {
-        add({ rel: 'preload', href: 'assets/fonts/montserrat-' + w + '.woff2', as: 'font', type: 'font/woff2', crossorigin: '' });
+      ['gibson-700', 'opensans-400'].forEach(function (f) {
+        add({ rel: 'preload', href: 'assets/fonts/' + f + '.woff2', as: 'font', type: 'font/woff2', crossorigin: '' });
       });
-      add({ rel: 'stylesheet', href: 'assets/css/fonts.css?v=1' });
+      add({ rel: 'stylesheet', href: 'assets/css/fonts.css?v=2' });
       add({ rel: 'manifest', href: 'site.webmanifest' });
     })(document);
   </script>
-  <noscript><link rel="stylesheet" href="assets/css/fonts.css?v=1"></noscript>
-  <link rel="stylesheet" href="assets/css/styles.css?v=18">
+  <noscript><link rel="stylesheet" href="assets/css/fonts.css?v=2"></noscript>
+  <link rel="stylesheet" href="assets/css/styles.css?v=19">
   <script src="assets/js/main.js?v=4" defer></script>
 
   <!-- Dados estruturados (Google e LLMs) -->
