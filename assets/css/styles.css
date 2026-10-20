@@ -308,12 +308,13 @@ button { font: inherit; }
     linear-gradient(var(--gradient-angle), var(--blue) 0%, var(--accent) 40%, var(--deep) 80%, var(--ink) 100%);
   /* volume: brilho em cima, sombra embaixo */
   box-shadow: var(--shadow-brand), inset 0 1px 1px rgba(255, 255, 255, .35), inset 0 -3px 6px rgba(1, 14, 25, .35);
-  transition: transform .2s cubic-bezier(.34, 1.56, .64, 1), box-shadow .15s ease;
+  transition: transform .35s cubic-bezier(.34, 1.56, .64, 1), box-shadow .15s ease;
 }
-.btn--gradient:hover { transform: translateY(-1px); animation: liquid-flow 2.5s linear infinite; }
+/* Mouse em cima: cresce 20% e os reflexos começam a correr */
+.btn--gradient:hover { transform: scale(1.2); animation: liquid-flow 2.5s linear infinite; }
 .btn--gradient:focus-visible { animation: liquid-flow 2.5s linear infinite; }
 .btn--gradient:active {
-  transform: translateY(1px) scale(.98);
+  transform: scale(1.18);
   box-shadow: 0 1px 2px rgba(1, 14, 25, .3), inset 0 2px 4px rgba(1, 14, 25, .45), inset 0 1px 2px rgba(1, 14, 25, .3);
 }
 /* Onda de luz no clique (span criado pelo main.js no ponto do clique) */
