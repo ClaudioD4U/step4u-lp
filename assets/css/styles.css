@@ -77,6 +77,24 @@ button { font: inherit; }
 .btn--accent { background: var(--accent); color: #fff; }
 .btn--outline { background: var(--card); color: var(--deep); border-color: var(--input); }
 .btn--white { background: #fff; color: var(--deep); }
+/* "Flow": no hover um círculo azul cresce do centro e preenche o botão, a seta
+   da direita sai e outra entra pela esquerda, empurrando o texto. */
+.btn--flow { position: relative; overflow: hidden; isolation: isolate; transition: border-color .6s cubic-bezier(.23,1,.32,1), color .6s cubic-bezier(.23,1,.32,1), border-radius .6s cubic-bezier(.23,1,.32,1), transform .2s ease; }
+.btn--flow .flow-text { position: relative; z-index: 1; transform: translateX(-12px); transition: transform .8s ease-out; }
+.btn--flow .flow-fill {
+  position: absolute; top: 50%; left: 50%; z-index: -1; width: 16px; aspect-ratio: 1; border-radius: 50%;
+  background: var(--deep); opacity: 0; transform: translate(-50%, -50%);
+  transition: width .8s cubic-bezier(.19,1,.22,1), opacity .8s cubic-bezier(.19,1,.22,1);
+}
+.btn--flow .flow-arrow { position: absolute; z-index: 2; top: 50%; width: 16px; height: 16px; margin-top: -8px; transition: left .8s cubic-bezier(.34,1.56,.64,1), right .8s cubic-bezier(.34,1.56,.64,1); }
+.btn--flow .flow-arrow--in { left: -25%; }
+.btn--flow .flow-arrow--out { right: 16px; }
+.btn--flow:hover, .btn--flow:focus-visible { border-color: transparent; border-radius: 12px; color: #fff; }
+.btn--flow:hover .flow-text, .btn--flow:focus-visible .flow-text { transform: translateX(12px); }
+.btn--flow:hover .flow-fill, .btn--flow:focus-visible .flow-fill { width: 110%; opacity: 1; }
+.btn--flow:hover .flow-arrow--in, .btn--flow:focus-visible .flow-arrow--in { left: 16px; }
+.btn--flow:hover .flow-arrow--out, .btn--flow:focus-visible .flow-arrow--out { right: -25%; }
+.btn--flow:active { transform: scale(.95); }
 /* Seta em pílula branca dentro do botão */
 .btn--badge { padding: 0 5px 0 22px; }
 .btn-badge { display: grid; place-items: center; padding: 10px; border-radius: 20px; background: #fff; color: var(--accent); }
