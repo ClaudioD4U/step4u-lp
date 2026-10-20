@@ -285,7 +285,8 @@ button { font: inherit; }
   font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
 }
 .plan-kicker { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
-.plan-name { margin-top: 4px; font-size: 20px; }
+.card .plan-name { margin-top: 4px; font-size: 23.4px; }  /* 18px + 30% */
+.card .plan-kicker { font-size: 8.4px; }                     /* 14px - 40% */
 .plan-price { display: flex; align-items: baseline; gap: 4px; margin-top: 12px; }
 .plan-price strong { font: 700 36px/1.1 var(--font-display); color: var(--deep); }
 .plan-price span { color: var(--muted); font-size: 14px; }
