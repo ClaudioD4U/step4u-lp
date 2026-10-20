@@ -274,10 +274,24 @@ button { font: inherit; }
     linear-gradient(140deg, var(--blue) 0%, var(--accent) 35%, var(--deep) 70%, var(--ink) 100%) border-box;
   box-shadow: var(--shadow-brand);
 }
+/* Ângulo registrado como <angle> para o navegador conseguir animar o degradê. */
+@property --gradient-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 120deg;
+}
 .btn--gradient {
-  background: linear-gradient(120deg, var(--blue) 0%, var(--accent) 40%, var(--deep) 80%, var(--ink) 100%);
+  --gradient-angle: 120deg;
+  background: linear-gradient(var(--gradient-angle), var(--blue) 0%, var(--accent) 40%, var(--deep) 80%, var(--ink) 100%);
   color: #fff;
   box-shadow: var(--shadow-brand);
+}
+/* Mouse em cima: o degradê dá uma volta completa e termina na posição original. */
+.btn--gradient:hover,
+.btn--gradient:focus-visible { animation: gradient-spin 1.2s cubic-bezier(.65, 0, .35, 1) 1; }
+@keyframes gradient-spin {
+  from { --gradient-angle: 120deg; }
+  to { --gradient-angle: 480deg; }
 }
 .card .plan-badge {
   position: absolute; top: -12px; left: 50%; transform: translateX(-50%); white-space: nowrap;
