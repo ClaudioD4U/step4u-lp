@@ -264,36 +264,64 @@ button { font: inherit; }
 /* Planos */
 .plans { display: grid; gap: 24px; max-width: 1120px; margin-inline: auto; padding-top: 12px; }
 .plan { position: relative; display: flex; flex-direction: column; padding-top: 28px; }
-/* Plano em destaque: borda em degradê (azul claro → escuro, como a seção de
-   análise prévia) feita com dois fundos: o branco no padding-box e o
-   degradê no border-box. */
+/* Plano em destaque: efeito "metal líquido" nas cores da marca.
+   Reflexos de luz correm sobre o degradê azul (borda do card e botão,
+   sincronizados pela mesma variável). Animado só com o card visível
+   (.is-flowing, aplicado pelo main.js) e desligado em movimento reduzido.
+   Variáveis registradas (@property) para o navegador conseguir animá-las. */
+@property --gradient-angle { syntax: "<angle>"; inherits: true; initial-value: 130deg; }
+@property --sheen { syntax: "<percentage>"; inherits: true; initial-value: 100%; }
+@property --sheen-alpha { syntax: "<number>"; inherits: true; initial-value: .45; }
+
 .plan--featured {
   --gradient-angle: 130deg;
   border: 2px solid transparent;
   background:
     linear-gradient(var(--card), var(--card)) padding-box,
+    linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, var(--sheen-alpha)) 50%, transparent 60%) var(--sheen) 0 / 300% 100% border-box,
     linear-gradient(var(--gradient-angle), var(--blue) 0%, var(--accent) 35%, var(--deep) 70%, var(--ink) 100%) border-box;
   box-shadow: var(--shadow-brand);
+  transition: --sheen-alpha .5s ease, box-shadow .3s ease;
 }
-/* Ângulo registrado como <angle> para o navegador conseguir animar o degradê.
-   Herdável: o botão usa o mesmo ângulo do card, então borda e botão giram juntos. */
-@property --gradient-angle {
-  syntax: "<angle>";
-  inherits: true;
-  initial-value: 130deg;
-}
-.btn--gradient {
-  background: linear-gradient(var(--gradient-angle), var(--blue) 0%, var(--accent) 40%, var(--deep) 80%, var(--ink) 100%);
-  color: #fff;
-  box-shadow: var(--shadow-brand);
-}
-/* Mouse em qualquer parte do card (ou foco pelo teclado): borda e botão dão
-   uma volta completa juntos e terminam na posição original. */
+.plan--featured.is-flowing { animation: liquid-flow 5s linear infinite; }
+/* Mouse no card: reflexos mais intensos */
 .plan--featured:hover,
-.plan--featured:focus-within { animation: gradient-spin 1.8s ease-in-out 1; }
-@keyframes gradient-spin {
-  from { --gradient-angle: 130deg; }
-  to { --gradient-angle: 490deg; }
+.plan--featured:focus-within { --sheen-alpha: .95; box-shadow: 0 10px 28px rgba(0, 48, 117, .22); }
+@keyframes liquid-flow {
+  from { --sheen: 100%; }
+  to { --sheen: 0%; }
+}
+
+.btn--gradient {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(1, 14, 25, .35);
+  background:
+    /* reflexo principal que corre pelo botão */
+    linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, calc(var(--sheen-alpha) * .55)) 50%, transparent 60%) var(--sheen) 0 / 300% 100%,
+    /* faixas suaves de "metal" */
+    repeating-linear-gradient(105deg, rgba(255, 255, 255, 0) 0 36px, rgba(255, 255, 255, .09) 52px, rgba(255, 255, 255, 0) 68px) calc(var(--sheen) * 2) 0 / 200% 100%,
+    linear-gradient(var(--gradient-angle), var(--blue) 0%, var(--accent) 40%, var(--deep) 80%, var(--ink) 100%);
+  /* volume: brilho em cima, sombra embaixo */
+  box-shadow: var(--shadow-brand), inset 0 1px 1px rgba(255, 255, 255, .35), inset 0 -3px 6px rgba(1, 14, 25, .35);
+  transition: transform .2s cubic-bezier(.34, 1.56, .64, 1), box-shadow .15s ease;
+}
+.btn--gradient:hover { transform: translateY(-1px); }
+.btn--gradient:active {
+  transform: translateY(1px) scale(.98);
+  box-shadow: 0 1px 2px rgba(1, 14, 25, .3), inset 0 2px 4px rgba(1, 14, 25, .45), inset 0 1px 2px rgba(1, 14, 25, .3);
+}
+/* Onda de luz no clique (span criado pelo main.js no ponto do clique) */
+.btn-ripple {
+  position: absolute; z-index: -1; width: 20px; height: 20px; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 255, 255, .45) 0%, rgba(255, 255, 255, 0) 70%);
+  transform: translate(-50%, -50%) scale(0);
+  animation: btn-ripple .6s ease-out forwards;
+}
+@keyframes btn-ripple {
+  to { transform: translate(-50%, -50%) scale(14); opacity: 0; }
 }
 .card .plan-badge {
   position: absolute; top: -12px; left: 50%; transform: translateX(-50%); white-space: nowrap;

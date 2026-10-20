@@ -155,5 +155,31 @@
     });
   }
 
+  /* ---------- Plano em destaque: "metal líquido" ----------
+     Anima os reflexos só enquanto o card está visível (economiza bateria/CPU)
+     e cria a onda de luz no ponto do clique do botão. */
+  var featured = document.querySelector('.plan--featured');
+  if (featured && !reduceMotion) {
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        featured.classList.toggle('is-flowing', entries[0].isIntersecting);
+      }).observe(featured);
+    } else {
+      featured.classList.add('is-flowing');
+    }
+  }
+  document.querySelectorAll('.btn--gradient').forEach(function (btn) {
+    btn.addEventListener('pointerdown', function (e) {
+      if (reduceMotion) return;
+      var r = btn.getBoundingClientRect();
+      var ripple = document.createElement('span');
+      ripple.className = 'btn-ripple';
+      ripple.style.left = (e.clientX - r.left) + 'px';
+      ripple.style.top = (e.clientY - r.top) + 'px';
+      btn.appendChild(ripple);
+      ripple.addEventListener('animationend', function () { ripple.remove(); });
+    });
+  });
+
   root.classList.add('js');
 })();
