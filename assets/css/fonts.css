@@ -1,5 +1,6 @@
-/* Gibson (títulos) e Open Sans (texto), auto-hospedadas e recortadas para latim.
-   Usadas quando a página vem de um servidor. */
-@font-face{font-family:"Gibson";font-style:normal;font-weight:700;font-display:swap;src:url("../fonts/gibson-700.woff2") format("woff2")}
+/* Gibson SemiBold (títulos) e Open Sans (texto), auto-hospedadas e recortadas para latim.
+   Usadas quando a página vem de um servidor. A Gibson responde a 600–800 para
+   todo título usar a SemiBold sem negrito sintético. */
+@font-face{font-family:"Gibson";font-style:normal;font-weight:600 800;font-display:swap;src:url("../fonts/gibson-600.woff2") format("woff2")}
 @font-face{font-family:"Open Sans";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/opensans-400.woff2") format("woff2")}
 @font-face{font-family:"Open Sans";font-style:normal;font-weight:700;font-display:swap;src:url("../fonts/opensans-700.woff2") format("woff2")}

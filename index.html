@@ -39,15 +39,15 @@
       var h = d.head, file = location.protocol === 'file:';
       function add(attrs) { var l = d.createElement('link'); for (var k in attrs) l.setAttribute(k, attrs[k]); h.appendChild(l); }
       if (file) { add({ rel: 'stylesheet', href: 'assets/css/fonts-inline.css' }); return; }
-      ['gibson-700', 'opensans-400'].forEach(function (f) {
+      ['gibson-600', 'opensans-400'].forEach(function (f) {
         add({ rel: 'preload', href: 'assets/fonts/' + f + '.woff2', as: 'font', type: 'font/woff2', crossorigin: '' });
       });
-      add({ rel: 'stylesheet', href: 'assets/css/fonts.css?v=2' });
+      add({ rel: 'stylesheet', href: 'assets/css/fonts.css?v=3' });
       add({ rel: 'manifest', href: 'site.webmanifest' });
     })(document);
   </script>
-  <noscript><link rel="stylesheet" href="assets/css/fonts.css?v=2"></noscript>
-  <link rel="stylesheet" href="assets/css/styles.css?v=20">
+  <noscript><link rel="stylesheet" href="assets/css/fonts.css?v=3"></noscript>
+  <link rel="stylesheet" href="assets/css/styles.css?v=21">
   <script src="assets/js/main.js?v=4" defer></script>
 
   <!-- Dados estruturados (Google e LLMs) -->

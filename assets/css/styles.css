@@ -6,7 +6,7 @@
 /* Fontes: ver assets/css/fonts.css (servidor) e fonts-inline.css (arquivo local). */
 /* Arial com as medidas ajustadas para ocupar o mesmo espaço da Gibson e da
    Open Sans enquanto elas carregam: a troca de fonte não desloca o layout (CLS 0). */
-@font-face { font-family: "Gibson Fallback"; src: local("Arial Bold"), local("Arial-BoldMT"), local("Arial"); font-weight: 700; size-adjust: 100.5%; ascent-override: 79.6%; descent-override: 19.9%; line-gap-override: 19.9%; }
+@font-face { font-family: "Gibson Fallback"; src: local("Arial Bold"), local("Arial-BoldMT"), local("Arial"); font-weight: 600 800; size-adjust: 94.2%; ascent-override: 84.9%; descent-override: 21.2%; line-gap-override: 15.9%; }
 @font-face { font-family: "Open Sans Fallback"; src: local("Arial"), local("ArialMT"); font-weight: 400; size-adjust: 104.7%; ascent-override: 102.1%; descent-override: 28%; line-gap-override: 0%; }
 @font-face { font-family: "Open Sans Fallback"; src: local("Arial Bold"), local("Arial-BoldMT"); font-weight: 700; size-adjust: 103.4%; ascent-override: 103.4%; descent-override: 28.3%; line-gap-override: 0%; }
 
@@ -45,7 +45,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 img, svg { display: block; max-width: 100%; }
-h1, h2, h3 { font-family: var(--font-display); font-weight: 700; color: var(--deep); margin: 0; line-height: 1.2; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; color: var(--deep); margin: 0; line-height: 1.2; }
 p { margin: 0; }
 ul, ol { list-style: none; margin: 0; padding: 0; }
 a { color: inherit; }
@@ -139,7 +139,7 @@ button { font: inherit; }
 }
 .hero-graphic { position: absolute; right: -120px; bottom: -80px; width: 560px; height: auto; opacity: .55; pointer-events: none; }
 .hero-content { position: relative; display: flex; flex-direction: column; align-items: center; gap: 16px; padding-block: 112px 48px; text-align: center; }
-.hero-title { min-width: 80%; max-width: 680px; font-size: 48px; font-weight: 800; letter-spacing: -1px; }
+.hero-title { min-width: 80%; max-width: 680px; font-size: 48px; font-weight: 600; letter-spacing: -1px; }
 .hero-subtitle { min-width: 80%; max-width: 640px; color: var(--muted); font-size: 18px; line-height: 1.2; }
 .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 8px; }
 
