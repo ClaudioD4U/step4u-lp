@@ -112,5 +112,48 @@
     });
   }
 
+  /* ---------- Entrada por seção: cabeçalho e boxes aparecem um a um ----------
+     O HTML já vem visível (buscadores/LLMs leem tudo). Só o que está abaixo da
+     dobra é escondido aqui e revelado quando a seção chega na tela. */
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    var groups = [
+      '.section-header > *',
+      '.lead-wrap > *',
+      '.card-grid > li, .split > .media-slot',
+      '.feature-grid > li',
+      '.journey > li',
+      '.plans > li',
+      '.testimonials > li',
+      '.faq > details',
+      '.cta-banner'
+    ];
+    var fold = window.innerHeight;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+
+    groups.forEach(function (selector) {
+      // Cada grupo de irmãos tem sua própria cascata (90 ms entre itens).
+      var byParent = new Map();
+      document.querySelectorAll(selector).forEach(function (el) {
+        if (el.getBoundingClientRect().top < fold) return; // já visível ao carregar
+        var list = byParent.get(el.parentNode) || [];
+        list.push(el);
+        byParent.set(el.parentNode, list);
+      });
+      byParent.forEach(function (list) {
+        list.forEach(function (el, i) {
+          el.style.setProperty('--reveal-delay', Math.min(i, 6) * 90 + 'ms');
+          el.classList.add('reveal');
+          io.observe(el);
+        });
+      });
+    });
+  }
+
   root.classList.add('js');
 })();
