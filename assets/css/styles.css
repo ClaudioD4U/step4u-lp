@@ -199,9 +199,9 @@ button { font: inherit; }
 }
 .media-slot img { width: 70%; height: auto; opacity: .9; }
 /* Com foto: ocupa a área toda, recortando sem distorcer */
-.media-slot--photo { margin: 0; background: var(--border); }
+.media-slot--photo { position: relative; margin: 0; background: var(--border); }
 .media-slot--photo picture { display: contents; }
-.media-slot--photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; opacity: 1; }
+.media-slot--photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; opacity: 1; }
 
 .metric-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
 .metric { display: flex; flex-direction: column; }
